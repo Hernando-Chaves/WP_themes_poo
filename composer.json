@@ -1,0 +1,15 @@
+{
+    "name": "goths/practica-theme",
+    "autoload": {
+        "psr-4": {
+            "BWC\\THEME\\": "Inc/"
+        }
+    },
+    "authors": [
+        {
+            "name": "gothskull",
+            "email": "chaza-hejo-strong@hotmail.com"
+        }
+    ],
+    "require": {}
+}
