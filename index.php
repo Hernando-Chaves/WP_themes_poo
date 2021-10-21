@@ -1,40 +1,22 @@
 <?php get_header() ?>
-
-<?php  
-
-
-trait Singleton
-{
-    public static function get_instance()
-    {
-        static $instance = [];
-        $called_class = get_called_class();
-        
-        if(!isset($instance[$called_class])){
-            echo "Desde Singleton Trait <br>";
-            $instance[$called_class] = new $called_class;
-        }
-
-        return $instance[$called_class];
-    }
-}
-
-
-
-
-?>
-
-
-<div class="content">
-    
-
-    
- 
+<div id="primary">
+    <main id="main" class="site-main mt-5">
+        <div class="container">
+            <?php
+            if (is_home() && !is_front_page()) : ?>
+                <h1 class="mb-5"><?php single_post_title(); ?> </h1>
+            <?php endif;
+            if (have_posts()) : ?>
+                <div class="row d-flex justify-content-around">
+                    <?php while (have_posts()) : the_post();
+                        get_template_part('template-parts/content');
+                    endwhile; ?>
+                </div>
+            <?php else :
+                get_template_part('template-parts/no-content');
+            endif; ?>
+        </div>
+        <?php get_template_part('template-parts/no-content'); ?>
+    </main>
 </div>
-
 <?php get_footer() ?>
-
-
-
-
-

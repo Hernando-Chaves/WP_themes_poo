@@ -28,4 +28,25 @@ class Bwc_register_menus_class
 
           return !empty($menu_id) ? $menu_id : '';
      }
+
+     public function get_child_menu_items($array_menu, $parent_id)
+     {
+          $child_menu_items = [];
+
+          if (!empty($array_menu) && is_array($array_menu)) :
+
+               foreach ($array_menu as $menu_item) :
+
+                    if (intval($menu_item->menu_item_parent) === $parent_id) :
+
+                         array_push($child_menu_items, $menu_item);
+
+                    endif;
+
+               endforeach;
+
+          endif;
+
+          return $child_menu_items;
+     }
 }
